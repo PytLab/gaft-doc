@@ -6,4 +6,6 @@ API
 
    engine
    mpiutil
+   components.binary_individual
+   components.decimal_individual
 

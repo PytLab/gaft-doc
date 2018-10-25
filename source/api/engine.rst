@@ -1,5 +1,5 @@
-engine
-------
+gaft.engine
+-----------
 
 .. automodule:: gaft.engine
    :members:

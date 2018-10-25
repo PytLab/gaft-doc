@@ -1,5 +1,5 @@
-mpiutil
--------
+gaft.mpiutil
+------------
 
 .. automodule:: gaft.mpiutil
    :members:

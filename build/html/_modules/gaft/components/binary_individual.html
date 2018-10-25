@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="Python" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="Python" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>gaft.components.binary_individual &mdash; GAFT GAFT documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> GAFT
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">GAFT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>gaft.components.binary_individual</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for gaft.components.binary_individual</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&#39;&#39;&#39; Module for Individual with binary encoding.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">log2</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">accumulate</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">.individual</span> <span class="k">import</span> <span class="n">IndividualBase</span>
+<span class="kn">from</span> <span class="nn">..mpiutil</span> <span class="k">import</span> <span class="n">MPIUtil</span>
+
+<span class="n">mpi</span> <span class="o">=</span> <span class="n">MPIUtil</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="BinaryIndividual"><a class="viewcode-back" href="../../../api/components.binary_individual.html#gaft.components.binary_individual.BinaryIndividual">[docs]</a><span class="k">class</span> <span class="nc">BinaryIndividual</span><span class="p">(</span><span class="n">IndividualBase</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Class for individual in population. Random solution will be initialized</span>
+<span class="sd">    by default.</span>
+
+<span class="sd">    :param ranges: value ranges for all entries in solution.</span>
+<span class="sd">    :type ranges: tuple list</span>
+
+<span class="sd">    :param eps: decrete precisions for binary encoding, default is 0.001.</span>
+<span class="sd">    :type eps: float or float list (with the same length with ranges)</span>
+
+<span class="sd">    .. Note:</span>
+
+<span class="sd">        The decrete precisions for different components in varants may be</span>
+<span class="sd">        adjusted automatically (possible precision loss) if eps and ranges</span>
+<span class="sd">        are not appropriate.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ranges</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">ranges</span><span class="p">,</span> <span class="n">eps</span><span class="p">)</span>
+
+        <span class="c1"># Lengths for all binary sequence in chromsome and adjusted decrete precisions.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lengths</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">eps</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)):</span>
+            <span class="n">length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">log2</span><span class="p">((</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">eps</span><span class="p">))</span>
+            <span class="n">precision</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">length</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">precisions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">precision</span>
+
+        <span class="c1"># The start and end indices for each gene segment for entries in solution.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gene_indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_gene_indices</span><span class="p">()</span>
+
+        <span class="c1"># Initialize individual randomly.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<div class="viewcode-block" id="BinaryIndividual.encode"><a class="viewcode-back" href="../../../api/components.binary_individual.html#gaft.components.binary_individual.BinaryIndividual.encode">[docs]</a>    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Encode solution to gene sequence in individual using different encoding.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">chromsome</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">_</span><span class="p">),</span> <span class="n">length</span><span class="p">,</span> <span class="n">eps</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solution</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span>
+                                            <span class="bp">self</span><span class="o">.</span><span class="n">lengths</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">precisions</span><span class="p">):</span>
+            <span class="n">chromsome</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">binarize</span><span class="p">(</span><span class="n">var</span><span class="o">-</span><span class="n">a</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">length</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">chromsome</span></div>
+
+<div class="viewcode-block" id="BinaryIndividual.decode"><a class="viewcode-back" href="../../../api/components.binary_individual.html#gaft.components.binary_individual.BinaryIndividual.decode">[docs]</a>    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Decode gene sequence to solution of target function.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">solution</span> <span class="o">=</span>  <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">decimalize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chromsome</span><span class="p">[</span><span class="n">start</span><span class="p">:</span> <span class="n">end</span><span class="p">],</span> <span class="n">eps</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">)</span>
+                     <span class="k">for</span> <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">),</span> <span class="p">(</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">_</span><span class="p">),</span> <span class="n">eps</span> <span class="ow">in</span>
+                     <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gene_indices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">precisions</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">solution</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_gene_indices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Helper function to get gene slice indices.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">end_indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">accumulate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lengths</span><span class="p">))</span>
+        <span class="n">start_indices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">end_indices</span><span class="p">[:</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">start_indices</span><span class="p">,</span> <span class="n">end_indices</span><span class="p">))</span>
+
+<div class="viewcode-block" id="BinaryIndividual.binarize"><a class="viewcode-back" href="../../../api/components.binary_individual.html#gaft.components.binary_individual.BinaryIndividual.binarize">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">binarize</span><span class="p">(</span><span class="n">decimal</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Helper function to convert a float to binary sequence.</span>
+
+<span class="sd">        :param decimal: the decimal number to be converted</span>
+<span class="sd">        :type decimal: float</span>
+
+<span class="sd">        :param eps: the decrete precision of binary sequence</span>
+<span class="sd">        :type eps: float</span>
+
+<span class="sd">        :param length: the length of binary sequence.</span>
+<span class="sd">        :type length: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">decimal</span><span class="o">/</span><span class="n">eps</span><span class="p">)</span>
+        <span class="n">bin_str</span> <span class="o">=</span> <span class="s1">&#39;{:0&gt;</span><span class="si">{}</span><span class="s1">b}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bin_str</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="BinaryIndividual.decimalize"><a class="viewcode-back" href="../../../api/components.binary_individual.html#gaft.components.binary_individual.BinaryIndividual.decimalize">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">decimalize</span><span class="p">(</span><span class="n">binary</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Helper function to convert a binary sequence back to decimal number.</span>
+
+<span class="sd">        :param binary: The binary list to be converted</span>
+<span class="sd">        :type binary: list of int</span>
+
+<span class="sd">        :param eps: the decrete precision of binary sequence</span>
+<span class="sd">        :type eps: float</span>
+
+<span class="sd">        :param lower_bound: the lower bound for decimal number</span>
+<span class="sd">        :type lower_bound: float</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">bin_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span> <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">binary</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">lower_bound</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">bin_str</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">eps</span></div></div>
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zhengjiang Shao
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

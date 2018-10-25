@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="Python" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="Python" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>gaft.components.binary_individual &mdash; GAFT GAFT documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="gaft.components.decimal_individual" href="components.decimal_individual.html" />
+    <link rel="prev" title="gaft.mpiutil" href="mpiutil.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> GAFT
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="engine.html">gaft.engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpiutil.html">gaft.mpiutil</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">gaft.components.binary_individual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.decimal_individual.html">gaft.components.decimal_individual</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GAFT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">API</a> &raquo;</li>
+        
+      <li>gaft.components.binary_individual</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/components.binary_individual.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-gaft.components.binary_individual">
+<span id="gaft-components-binary-individual"></span><h1>gaft.components.binary_individual<a class="headerlink" href="#module-gaft.components.binary_individual" title="Permalink to this headline">¶</a></h1>
+<p>Module for Individual with binary encoding.</p>
+<dl class="class">
+<dt id="gaft.components.binary_individual.BinaryIndividual">
+<em class="property">class </em><code class="descclassname">gaft.components.binary_individual.</code><code class="descname">BinaryIndividual</code><span class="sig-paren">(</span><em>ranges</em>, <em>eps=0.001</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/components/binary_individual.html#BinaryIndividual"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.components.binary_individual.BinaryIndividual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">gaft.components.individual.IndividualBase</span></code></p>
+<p>Class for individual in population. Random solution will be initialized
+by default.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ranges</strong> (<em>tuple list</em>) -- value ranges for all entries in solution.</li>
+<li><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>float list</em><em> (</em><em>with the same length with ranges</em><em>)</em>) -- decrete precisions for binary encoding, default is 0.001.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="staticmethod">
+<dt id="gaft.components.binary_individual.BinaryIndividual.binarize">
+<em class="property">static </em><code class="descname">binarize</code><span class="sig-paren">(</span><em>decimal</em>, <em>eps</em>, <em>length</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/components/binary_individual.html#BinaryIndividual.binarize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.components.binary_individual.BinaryIndividual.binarize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to convert a float to binary sequence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>decimal</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) -- the decimal number to be converted</li>
+<li><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) -- the decrete precision of binary sequence</li>
+<li><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) -- the length of binary sequence.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gaft.components.binary_individual.BinaryIndividual.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gaft.components.binary_individual.BinaryIndividual.clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clone a new individual from current one.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="gaft.components.binary_individual.BinaryIndividual.decimalize">
+<em class="property">static </em><code class="descname">decimalize</code><span class="sig-paren">(</span><em>binary</em>, <em>eps</em>, <em>lower_bound</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/components/binary_individual.html#BinaryIndividual.decimalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.components.binary_individual.BinaryIndividual.decimalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to convert a binary sequence back to decimal number.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>binary</strong> (<em>list of int</em>) -- The binary list to be converted</li>
+<li><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) -- the decrete precision of binary sequence</li>
+<li><strong>lower_bound</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) -- the lower bound for decimal number</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gaft.components.binary_individual.BinaryIndividual.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/components/binary_individual.html#BinaryIndividual.decode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.components.binary_individual.BinaryIndividual.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decode gene sequence to solution of target function.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gaft.components.binary_individual.BinaryIndividual.encode">
+<code class="descname">encode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/components/binary_individual.html#BinaryIndividual.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.components.binary_individual.BinaryIndividual.encode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encode solution to gene sequence in individual using different encoding.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gaft.components.binary_individual.BinaryIndividual.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>chromsome=None</em>, <em>solution=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gaft.components.binary_individual.BinaryIndividual.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the individual by providing chromsome or solution.</p>
+<p>If both chromsome and solution are provided, only the chromsome would
+be used. If neither is provided, individual would be initialized randomly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>chromsome</strong> (<em>list of float/int.</em>) -- chromesome sequence for the individual</li>
+<li><strong>solution</strong> (<em>list of float.</em>) -- the variable vector of the target function.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="components.decimal_individual.html" class="btn btn-neutral float-right" title="gaft.components.decimal_individual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mpiutil.html" class="btn btn-neutral" title="gaft.mpiutil" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zhengjiang Shao
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
