@@ -1,0 +1,441 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="Python" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="Python" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>gaft.components.population &mdash; GAFT GAFT documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> GAFT
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">GAFT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>gaft.components.population</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for gaft.components.population</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">.individual</span> <span class="k">import</span> <span class="n">IndividualBase</span>
+
+
+<div class="viewcode-block" id="Memoized"><a class="viewcode-back" href="../../../api/components.population.html#gaft.components.population.Memoized">[docs]</a><span class="k">class</span> <span class="nc">Memoized</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Descriptor for population statistical varibles caching.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fitness</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instance</span> <span class="o">=</span> <span class="n">instance</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fitness</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">((</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">updated</span><span class="p">)</span>          <span class="c1"># population not changed</span>
+                <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>    <span class="c1"># result already cached</span>
+                <span class="ow">and</span> <span class="p">(</span><span class="n">fitness</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitness</span><span class="p">)):</span>  <span class="c1"># fitness not changed</span>
+            <span class="c1"># Return cached result directly.</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">result</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Update fitness function.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fitness</span> <span class="o">=</span> <span class="n">fitness</span>
+            <span class="c1"># Update and memoize result.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="p">,</span> <span class="n">fitness</span><span class="p">)</span>
+            <span class="c1"># Recover flag.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">_updated</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="Individuals"><a class="viewcode-back" href="../../../api/components.population.html#gaft.components.population.Individuals">[docs]</a><span class="k">class</span> <span class="nc">Individuals</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Descriptor for all individuals in population.</span>
+
+<span class="sd">    .. Note::</span>
+<span class="sd">        Use this descriptor to ensure the individual related flags can be updated</span>
+<span class="sd">        when the population indivduals are changed.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">instance</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">instance</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="c1"># Update flag.</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">update_flag</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Population"><a class="viewcode-back" href="../../../api/components.population.html#gaft.components.population.Population">[docs]</a><span class="k">class</span> <span class="nc">Population</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Class for representing population in genetic algorithm.</span>
+
+<span class="sd">    :param indv_template: A template individual to clone all the other</span>
+<span class="sd">                          individuals in current population.</span>
+<span class="sd">    :type indv_template: :obj:`gaft.components.IndividualBase`</span>
+
+<span class="sd">    :param size: The size of population, number of individuals in population.</span>
+<span class="sd">    :type size: int</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># All individuals.</span>
+    <span class="n">individuals</span> <span class="o">=</span> <span class="n">Individuals</span><span class="p">(</span><span class="s1">&#39;individuals&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indv_template</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+        <span class="c1"># Population size.</span>
+        <span class="k">if</span> <span class="n">size</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Population size must be an even number&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>
+
+        <span class="c1"># Template individual.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indv_template</span> <span class="o">=</span> <span class="n">indv_template</span>
+
+        <span class="c1"># Flag for monitoring changes of population.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_updated</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># Container for all individuals.</span>
+        <span class="k">class</span> <span class="nc">IndvList</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+            <span class="sd">&#39;&#39;&#39; A proxy class inherited from built-in list to contain all</span>
+<span class="sd">            individuals which can update the population._updated flag</span>
+<span class="sd">            automatically when its content is changed.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="c1"># {{{</span>
+            <span class="c1"># NOTE: Use &#39;this&#39; here to avoid name conflict.</span>
+            <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+                <span class="nb">super</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+            <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+                <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                Override __setitem__ in built-in list type.</span>
+<span class="sd">                &#39;&#39;&#39;</span>
+                <span class="n">old_value</span> <span class="o">=</span> <span class="n">this</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">old_value</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+                    <span class="k">return</span>
+                <span class="nb">super</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+                <span class="c1"># Update population flag.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">update_flag</span><span class="p">()</span>
+
+            <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+                <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                Override append method of built-in list type.</span>
+<span class="sd">                &#39;&#39;&#39;</span>
+                <span class="nb">super</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+                <span class="c1"># Update population flag.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">update_flag</span><span class="p">()</span>
+
+            <span class="k">def</span> <span class="nf">extend</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="n">iterable_item</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">iterable_item</span><span class="p">:</span>
+                    <span class="k">return</span>
+                <span class="nb">super</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">iterable_item</span><span class="p">)</span>
+                <span class="c1"># Update population flag.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">update_flag</span><span class="p">()</span>
+            <span class="c1"># }}}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_individuals</span> <span class="o">=</span> <span class="n">IndvList</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Population.init"><a class="viewcode-back" href="../../../api/components.population.html#gaft.components.population.Population.init">[docs]</a>    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indvs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Initialize current population with individuals.</span>
+
+<span class="sd">        :param indvs: Initial individuals in population, randomly initialized</span>
+<span class="sd">                      individuals are created if not provided.</span>
+<span class="sd">        :type indvs: list of Individual object</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">IndvType</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indv_template</span><span class="o">.</span><span class="vm">__class__</span>
+
+        <span class="k">if</span> <span class="n">indvs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+                <span class="n">indv</span> <span class="o">=</span> <span class="n">IndvType</span><span class="p">(</span><span class="n">ranges</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">indv_template</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span>
+                                <span class="n">eps</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">indv_template</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">indv</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Check individuals.</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">indvs</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid individuals number&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">indv</span> <span class="ow">in</span> <span class="n">indvs</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">indv</span><span class="p">,</span> <span class="n">IndividualBase</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;individual class must be subclass of IndividualBase&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">individuals</span> <span class="o">=</span> <span class="n">indvs</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_updated</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Population.update_flag"><a class="viewcode-back" href="../../../api/components.population.html#gaft.components.population.Population.update_flag">[docs]</a>    <span class="k">def</span> <span class="nf">update_flag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Interface for updating individual update flag to True.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_updated</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">updated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Query function for population updating flag.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_updated</span>
+
+<div class="viewcode-block" id="Population.new"><a class="viewcode-back" href="../../../api/components.population.html#gaft.components.population.Population.new">[docs]</a>    <span class="k">def</span> <span class="nf">new</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Create a new emtpy population.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">indv_template</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">indv_template</span><span class="p">,</span>
+                              <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Get individual by index.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">key</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">&#39;Individual index(</span><span class="si">{}</span><span class="s1">) out of range&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Get length of population.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Population.best_indv"><a class="viewcode-back" href="../../../api/components.population.html#gaft.components.population.Population.best_indv">[docs]</a>    <span class="k">def</span> <span class="nf">best_indv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fitness</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; The individual with the best fitness.</span>
+
+<span class="sd">        :param fitness: Fitness function to calculate fitness value</span>
+<span class="sd">        :type fitness: function</span>
+
+<span class="sd">        :return: the best individual in current population</span>
+<span class="sd">        :rtype: :obj:`gaft.components.IndividualBase`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">all_fits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_fits</span><span class="p">(</span><span class="n">fitness</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="p">,</span>
+                   <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">indv</span><span class="p">:</span> <span class="n">all_fits</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">indv</span><span class="p">)])</span></div>
+
+<div class="viewcode-block" id="Population.worst_indv"><a class="viewcode-back" href="../../../api/components.population.html#gaft.components.population.Population.worst_indv">[docs]</a>    <span class="k">def</span> <span class="nf">worst_indv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fitness</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; The individual with the worst fitness.</span>
+
+<span class="sd">        :param fitness: Fitness function to calculate fitness value</span>
+<span class="sd">        :type fitness: function</span>
+
+<span class="sd">        :return: the worst individual in current population</span>
+<span class="sd">        :rtype: :obj:`gaft.components.IndividualBase`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">all_fits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_fits</span><span class="p">(</span><span class="n">fitness</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="p">,</span>
+                   <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">indv</span><span class="p">:</span> <span class="n">all_fits</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">indv</span><span class="p">)])</span></div>
+
+<div class="viewcode-block" id="Population.max"><a class="viewcode-back" href="../../../api/components.population.html#gaft.components.population.Population.max">[docs]</a>    <span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fitness</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Get the maximum fitness value in population.</span>
+
+<span class="sd">        :param fitness: Fitness function to calculate fitness value</span>
+<span class="sd">        :type fitness: function</span>
+
+<span class="sd">        :return: The maximum fitness value</span>
+<span class="sd">        :rtype: float</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">all_fits</span><span class="p">(</span><span class="n">fitness</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Population.min"><a class="viewcode-back" href="../../../api/components.population.html#gaft.components.population.Population.min">[docs]</a>    <span class="k">def</span> <span class="nf">min</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fitness</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Get the minimum value of fitness in population.</span>
+
+<span class="sd">        :param fitness: Fitness function to calculate fitness value</span>
+<span class="sd">        :type fitness: function</span>
+
+<span class="sd">        :return: The minimum fitness value</span>
+<span class="sd">        :rtype: float</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">all_fits</span><span class="p">(</span><span class="n">fitness</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Population.mean"><a class="viewcode-back" href="../../../api/components.population.html#gaft.components.population.Population.mean">[docs]</a>    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fitness</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Get the average fitness value in population.</span>
+
+<span class="sd">        :param fitness: Fitness function to calculate fitness value</span>
+<span class="sd">        :type fitness: function</span>
+
+<span class="sd">        :return: The average fitness value</span>
+<span class="sd">        :rtype: float</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">all_fits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_fits</span><span class="p">(</span><span class="n">fitness</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">all_fits</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">all_fits</span><span class="p">)</span></div>
+
+    <span class="nd">@Memoized</span>
+    <span class="k">def</span> <span class="nf">all_fits</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fitness</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Get all fitness values in population.</span>
+
+<span class="sd">        :param fitness: Fitness function to calculate fitness value</span>
+<span class="sd">        :type fitness: function</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">fitness</span><span class="p">(</span><span class="n">indv</span><span class="p">)</span> <span class="k">for</span> <span class="n">indv</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="p">]</span></div>
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zhengjiang Shao
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
