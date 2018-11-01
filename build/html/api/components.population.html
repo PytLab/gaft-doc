@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="gaft.analysis.console_output" href="analysis.console_output.html" />
     <link rel="prev" title="gaft.components.decimal_individual" href="components.decimal_individual.html" /> 
 
   
@@ -86,6 +87,8 @@
 <li class="toctree-l2"><a class="reference internal" href="components.binary_individual.html">gaft.components.binary_individual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="components.decimal_individual.html">gaft.components.decimal_individual</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">gaft.components.population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.console_output.html">gaft.analysis.console_output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.fitness_store.html">gaft.analysis.fitness_store</a></li>
 </ul>
 </li>
 </ul>
@@ -159,7 +162,7 @@
 <dl class="class">
 <dt id="gaft.components.population.Individuals">
 <em class="property">class </em><code class="descclassname">gaft.components.population.</code><code class="descname">Individuals</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/components/population.html#Individuals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.components.population.Individuals" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Descriptor for all individuals in population.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -171,14 +174,14 @@ when the population indivduals are changed.</p>
 <dl class="class">
 <dt id="gaft.components.population.Memoized">
 <em class="property">class </em><code class="descclassname">gaft.components.population.</code><code class="descname">Memoized</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/components/population.html#Memoized"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.components.population.Memoized" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Descriptor for population statistical varibles caching.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="gaft.components.population.Population">
 <em class="property">class </em><code class="descclassname">gaft.components.population.</code><code class="descname">Population</code><span class="sig-paren">(</span><em>indv_template</em>, <em>size=100</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/components/population.html#Population"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.components.population.Population" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class for representing population in genetic algorithm.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -187,7 +190,7 @@ when the population indivduals are changed.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>indv_template</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">gaft.components.IndividualBase</span></code>) -- A template individual to clone all the other
 individuals in current population.</li>
-<li><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) -- The size of population, number of individuals in population.</li>
+<li><strong>size</strong> (<em>int</em>) -- The size of population, number of individuals in population.</li>
 </ul>
 </td>
 </tr>
@@ -238,7 +241,7 @@ individuals are created if not provided.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The maximum fitness value</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
 </tr>
 </tbody>
 </table>
@@ -256,7 +259,7 @@ individuals are created if not provided.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The average fitness value</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
 </tr>
 </tbody>
 </table>
@@ -274,7 +277,7 @@ individuals are created if not provided.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The minimum fitness value</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
 </tr>
 </tbody>
 </table>
@@ -327,6 +330,8 @@ individuals are created if not provided.</td>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="analysis.console_output.html" class="btn btn-neutral float-right" title="gaft.analysis.console_output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="components.decimal_individual.html" class="btn btn-neutral" title="gaft.components.decimal_individual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

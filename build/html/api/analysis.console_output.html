@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="Python" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="Python" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>gaft.analysis.console_output &mdash; GAFT GAFT documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="gaft.analysis.fitness_store" href="analysis.fitness_store.html" />
+    <link rel="prev" title="gaft.components.population" href="components.population.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> GAFT
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="engine.html">gaft.engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpiutil.html">gaft.mpiutil</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.individual.html">gaft.components.individual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.binary_individual.html">gaft.components.binary_individual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.decimal_individual.html">gaft.components.decimal_individual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.population.html">gaft.components.population</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">gaft.analysis.console_output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.fitness_store.html">gaft.analysis.fitness_store</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GAFT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">API</a> &raquo;</li>
+        
+      <li>gaft.analysis.console_output</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/analysis.console_output.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-gaft.analysis.console_output">
+<span id="gaft-analysis-console-output"></span><h1>gaft.analysis.console_output<a class="headerlink" href="#module-gaft.analysis.console_output" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="gaft.analysis.console_output.ConsoleOutput">
+<em class="property">class </em><code class="descclassname">gaft.analysis.console_output.</code><code class="descname">ConsoleOutput</code><a class="reference internal" href="../_modules/gaft/analysis/console_output.html#ConsoleOutput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.analysis.console_output.ConsoleOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">gaft.plugin_interfaces.analysis.OnTheFlyAnalysis</span></code></p>
+<p>Built-in on-the-fly analysis plugin class for outputing log on console.</p>
+<dl class="docutils">
+<dt>Attribute:</dt>
+<dd><dl class="first last docutils">
+<dt>interval(<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): The analysis interval in evolution iteration, default </dt>
+<dd>value is 1 meaning analyze every step.</dd>
+<dt>master_only(<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>): Flag for if the analysis plugin is only effective </dt>
+<dd>in master process. Default is True.</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="gaft.analysis.console_output.ConsoleOutput.finalize">
+<code class="descname">finalize</code><span class="sig-paren">(</span><em>population</em>, <em>engine</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/analysis/console_output.html#ConsoleOutput.finalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.analysis.console_output.ConsoleOutput.finalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called after the iteration to allow for custom finalization and
+post-processing of the collected data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>population</strong> (<a class="reference internal" href="components.population.html#gaft.components.population.Population" title="gaft.components.population.Population"><em>Population</em></a>) -- The up to date population of the iteration.</li>
+<li><strong>engine</strong> (<a class="reference internal" href="engine.html#gaft.engine.GAEngine" title="gaft.engine.GAEngine"><em>GAEngine</em></a>) -- The current GAEngine where the analysis is running.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gaft.analysis.console_output.ConsoleOutput.register_step">
+<code class="descname">register_step</code><span class="sig-paren">(</span><em>g</em>, <em>population</em>, <em>engine</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/analysis/console_output.html#ConsoleOutput.register_step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.analysis.console_output.ConsoleOutput.register_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function called in each iteration step.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>g</strong> (<em>int</em>) -- Current generation number.</li>
+<li><strong>population</strong> (<a class="reference internal" href="components.population.html#gaft.components.population.Population" title="gaft.components.population.Population"><em>Population</em></a>) -- The up to date population of the iteration.</li>
+<li><strong>engine</strong> (<a class="reference internal" href="engine.html#gaft.engine.GAEngine" title="gaft.engine.GAEngine"><em>GAEngine</em></a>) -- The current GAEngine where the analysis is running.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gaft.analysis.console_output.ConsoleOutput.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><em>ng</em>, <em>engine</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/analysis/console_output.html#ConsoleOutput.setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.analysis.console_output.ConsoleOutput.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function called right before the start of genetic algorithm main iteration
+to allow for custom setup of the analysis object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ng</strong> (<em>int</em>) -- The number of generation.</li>
+<li><strong>engine</strong> (<a class="reference internal" href="engine.html#gaft.engine.GAEngine" title="gaft.engine.GAEngine"><em>GAEngine</em></a>) -- The current GAEngine where the analysis is running.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="analysis.fitness_store.html" class="btn btn-neutral float-right" title="gaft.analysis.fitness_store" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="components.population.html" class="btn btn-neutral" title="gaft.components.population" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zhengjiang Shao
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

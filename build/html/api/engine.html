@@ -86,6 +86,9 @@
 <li class="toctree-l2"><a class="reference internal" href="components.individual.html">gaft.components.individual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="components.binary_individual.html">gaft.components.binary_individual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="components.decimal_individual.html">gaft.components.decimal_individual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.population.html">gaft.components.population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.console_output.html">gaft.analysis.console_output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.fitness_store.html">gaft.analysis.fitness_store</a></li>
 </ul>
 </li>
 </ul>
@@ -160,7 +163,7 @@
 <dl class="class">
 <dt id="gaft.engine.GAEngine">
 <em class="property">class </em><code class="descclassname">gaft.engine.</code><code class="descname">GAEngine</code><span class="sig-paren">(</span><em>population</em>, <em>selection</em>, <em>crossover</em>, <em>mutation</em>, <em>fitness=None</em>, <em>analysis=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/engine.html#GAEngine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.engine.GAEngine" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class for representing a Genetic Algorithm engine. The class is the 
 central object in GAFT framework for running a genetic algorithm optimization.
 Once the population with individuals,  a set of genetic operators and fitness 
@@ -205,9 +208,9 @@ means for running a genetic algorthm optimization.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>target</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) -- The optimization target, maximization or minimization
+<li><strong>target</strong> (<em>str</em>) -- The optimization target, maximization or minimization
 possible value: 'min' or 'max'</li>
-<li><strong>ksi0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) -- Initial selective pressure adjustment value, default value is 2</li>
+<li><strong>ksi0</strong> (<em>float</em>) -- Initial selective pressure adjustment value, default value is 2</li>
 <li><strong>r</strong> (<em>float in range</em><em> [</em><em>0.9</em><em>, </em><em>0.999</em><em>]</em>) -- The reduction factor for selective pressure adjustment value,
 ksi^(k-1)*r is the adjustment value for generation k, default
 value is 0.9</li>
@@ -246,9 +249,9 @@ value is 0.9</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>target</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) -- The optimization target, maximization or minimization,
+<li><strong>target</strong> (<em>str</em>) -- The optimization target, maximization or minimization,
 possible value: 'max', 'min'</li>
-<li><strong>ksi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) -- Selective pressure adjustment value.</li>
+<li><strong>ksi</strong> (<em>float</em>) -- Selective pressure adjustment value.</li>
 </ul>
 </td>
 </tr>
@@ -289,7 +292,7 @@ possible value: 'max', 'min'</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ng</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) -- Evolution iteration steps (generation number)</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ng</strong> (<em>int</em>) -- Evolution iteration steps (generation number)</td>
 </tr>
 </tbody>
 </table>

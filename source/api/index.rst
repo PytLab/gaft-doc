@@ -10,4 +10,7 @@ API
    components.binary_individual
    components.decimal_individual
    components.population
+   operators.selection
+   analysis.console_output
+   analysis.fitness_store
 
