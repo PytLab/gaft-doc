@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API &mdash; GAFT GAFT documentation</title>
+  <title>gaft.operators.crossover &mdash; GAFT GAFT documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="gaft.engine" href="engine.html" />
-    <link rel="prev" title="Welcome to GAFT&#39;s documentation!" href="../index.html" /> 
+    <link rel="next" title="gaft.operators.mutation" href="operators.mutation.html" />
+    <link rel="prev" title="gaft.operators.selection" href="operators.selection.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -80,7 +80,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="engine.html">gaft.engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mpiutil.html">gaft.mpiutil</a></li>
 <li class="toctree-l2"><a class="reference internal" href="components.individual.html">gaft.components.individual</a></li>
@@ -88,7 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="components.decimal_individual.html">gaft.components.decimal_individual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="components.population.html">gaft.components.population</a></li>
 <li class="toctree-l2"><a class="reference internal" href="operators.selection.html">gaft.operators.selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="operators.crossover.html">gaft.operators.crossover</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">gaft.operators.crossover</a></li>
 <li class="toctree-l2"><a class="reference internal" href="operators.mutation.html">gaft.operators.mutation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="analysis.console_output.html">gaft.analysis.console_output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="analysis.fitness_store.html">gaft.analysis.fitness_store</a></li>
@@ -139,13 +139,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>API</li>
+          <li><a href="index.html">API</a> &raquo;</li>
+        
+      <li>gaft.operators.crossover</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/operators.crossover.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -158,23 +160,52 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="api">
-<h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="engine.html">gaft.engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mpiutil.html">gaft.mpiutil</a></li>
-<li class="toctree-l1"><a class="reference internal" href="components.individual.html">gaft.components.individual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="components.binary_individual.html">gaft.components.binary_individual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="components.decimal_individual.html">gaft.components.decimal_individual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="components.population.html">gaft.components.population</a></li>
-<li class="toctree-l1"><a class="reference internal" href="operators.selection.html">gaft.operators.selection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="operators.crossover.html">gaft.operators.crossover</a></li>
-<li class="toctree-l1"><a class="reference internal" href="operators.mutation.html">gaft.operators.mutation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="analysis.console_output.html">gaft.analysis.console_output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="analysis.fitness_store.html">gaft.analysis.fitness_store</a></li>
+  <div class="section" id="module-gaft.operators.crossover.uniform_crossover">
+<span id="gaft-operators-crossover"></span><h1>gaft.operators.crossover<a class="headerlink" href="#module-gaft.operators.crossover.uniform_crossover" title="Permalink to this headline">¶</a></h1>
+<p>Uniform Crossover operator implementation.</p>
+<dl class="class">
+<dt id="gaft.operators.crossover.uniform_crossover.UniformCrossover">
+<em class="property">class </em><code class="descclassname">gaft.operators.crossover.uniform_crossover.</code><code class="descname">UniformCrossover</code><span class="sig-paren">(</span><em>pc</em>, <em>pe=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/operators/crossover/uniform_crossover.html#UniformCrossover"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.operators.crossover.uniform_crossover.UniformCrossover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">gaft.plugin_interfaces.operators.crossover.Crossover</span></code></p>
+<p>Crossover operator with uniform crossover algorithm,
+see <a class="reference external" href="https://en.wikipedia.org/wiki/Crossover_(genetic_algorithm">https://en.wikipedia.org/wiki/Crossover_(genetic_algorithm</a>)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pc</strong> (<em>float in</em><em> (</em><em>0.0</em><em>, </em><em>1.0</em><em>]</em>) -- The probability of crossover (usaully between 0.25 ~ 1.0)</li>
+<li><strong>pe</strong> (<em>float in range</em><em> (</em><em>0.0</em><em>, </em><em>1.0</em><em>]</em>) -- Gene exchange probability.</li>
 </ul>
-</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="gaft.operators.crossover.uniform_crossover.UniformCrossover.cross">
+<code class="descname">cross</code><span class="sig-paren">(</span><em>father</em>, <em>mother</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/operators/crossover/uniform_crossover.html#UniformCrossover.cross"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.operators.crossover.uniform_crossover.UniformCrossover.cross" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cross chromsomes of parent using uniform crossover method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>population</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">gaft.components.Population</span></code>) -- Population where the selection operation occurs.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Selected parents (a father and a mother)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list of <code class="xref py py-obj docutils literal notranslate"><span class="pre">gaft.components.IndividualBase</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="gaft.operators.crossover.uniform_crossover.random">
+<code class="descclassname">gaft.operators.crossover.uniform_crossover.</code><code class="descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; x in the interval [0, 1).<a class="headerlink" href="#gaft.operators.crossover.uniform_crossover.random" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 
 
@@ -185,10 +216,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="engine.html" class="btn btn-neutral float-right" title="gaft.engine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="operators.mutation.html" class="btn btn-neutral float-right" title="gaft.operators.mutation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral" title="Welcome to GAFT&#39;s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="operators.selection.html" class="btn btn-neutral" title="gaft.operators.selection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

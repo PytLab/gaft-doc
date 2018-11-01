@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="Python" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="Python" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>gaft.operators.mutation &mdash; GAFT GAFT documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="gaft.analysis.console_output" href="analysis.console_output.html" />
+    <link rel="prev" title="gaft.operators.crossover" href="operators.crossover.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> GAFT
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="engine.html">gaft.engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpiutil.html">gaft.mpiutil</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.individual.html">gaft.components.individual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.binary_individual.html">gaft.components.binary_individual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.decimal_individual.html">gaft.components.decimal_individual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.population.html">gaft.components.population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operators.selection.html">gaft.operators.selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operators.crossover.html">gaft.operators.crossover</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">gaft.operators.mutation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.console_output.html">gaft.analysis.console_output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.fitness_store.html">gaft.analysis.fitness_store</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GAFT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">API</a> &raquo;</li>
+        
+      <li>gaft.operators.mutation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/operators.mutation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-gaft.operators.mutation.flip_bit_mutation">
+<span id="gaft-operators-mutation"></span><h1>gaft.operators.mutation<a class="headerlink" href="#module-gaft.operators.mutation.flip_bit_mutation" title="Permalink to this headline">¶</a></h1>
+<p>Flip Bit mutation implementation.</p>
+<dl class="class">
+<dt id="gaft.operators.mutation.flip_bit_mutation.FlipBitBigMutation">
+<em class="property">class </em><code class="descclassname">gaft.operators.mutation.flip_bit_mutation.</code><code class="descname">FlipBitBigMutation</code><span class="sig-paren">(</span><em>pm</em>, <em>pbm</em>, <em>alpha</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/operators/mutation/flip_bit_mutation.html#FlipBitBigMutation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.operators.mutation.flip_bit_mutation.FlipBitBigMutation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gaft.operators.mutation.flip_bit_mutation.FlipBitMutation" title="gaft.operators.mutation.flip_bit_mutation.FlipBitMutation"><code class="xref py py-class docutils literal notranslate"><span class="pre">gaft.operators.mutation.flip_bit_mutation.FlipBitMutation</span></code></a></p>
+<p>Mutation operator using Flip Bit mutation implementation with adaptive
+big mutation rate to overcome premature or local-best solution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pm</strong> (<em>float in</em><em> (</em><em>0.0</em><em>, </em><em>1.0</em><em>]</em>) -- The probability of mutation (usually between 0.001 ~ 0.1)</li>
+<li><strong>pbm</strong> (<em>float</em>) -- The probability of big mutation, usually more than 5 times
+bigger than pm.</li>
+<li><strong>alpha</strong> (<em>float</em><em>, </em><em>in range</em><em> (</em><em>0.5</em><em>, </em><em>1</em><em>)</em>) -- intensive factor</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="gaft.operators.mutation.flip_bit_mutation.FlipBitBigMutation.mutate">
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>individual</em>, <em>engine</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/operators/mutation/flip_bit_mutation.html#FlipBitBigMutation.mutate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.operators.mutation.flip_bit_mutation.FlipBitBigMutation.mutate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mutate the individual with adaptive big mutation rate.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>individual</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">gaft.components.IndividualBase</span></code>) -- The individual on which crossover operation occurs</li>
+<li><strong>engine</strong> (<a class="reference internal" href="engine.html#gaft.engine.GAEngine" title="gaft.engine.GAEngine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gaft.engine.GAEngine</span></code></a>) -- Current genetic algorithm engine</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A mutated individual</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gaft.components.IndividualBase</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gaft.operators.mutation.flip_bit_mutation.FlipBitMutation">
+<em class="property">class </em><code class="descclassname">gaft.operators.mutation.flip_bit_mutation.</code><code class="descname">FlipBitMutation</code><span class="sig-paren">(</span><em>pm</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/operators/mutation/flip_bit_mutation.html#FlipBitMutation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.operators.mutation.flip_bit_mutation.FlipBitMutation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">gaft.plugin_interfaces.operators.mutation.Mutation</span></code></p>
+<p>Mutation operator with Flip Bit mutation implementation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pm</strong> (<em>float in range</em><em> (</em><em>0.0</em><em>, </em><em>1.0</em><em>]</em>) -- The probability of mutation (usually between 0.001 ~ 0.1)</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="gaft.operators.mutation.flip_bit_mutation.FlipBitMutation.mutate">
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>individual</em>, <em>engine</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/operators/mutation/flip_bit_mutation.html#FlipBitMutation.mutate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.operators.mutation.flip_bit_mutation.FlipBitMutation.mutate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mutate the individual.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>individual</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">gaft.components.IndividualBase</span></code>) -- The individual on which crossover operation occurs</li>
+<li><strong>engine</strong> (<a class="reference internal" href="engine.html#gaft.engine.GAEngine" title="gaft.engine.GAEngine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gaft.engine.GAEngine</span></code></a>) -- Current genetic algorithm engine</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A mutated individual</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gaft.components.IndividualBase</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="gaft.operators.mutation.flip_bit_mutation.random">
+<code class="descclassname">gaft.operators.mutation.flip_bit_mutation.</code><code class="descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; x in the interval [0, 1).<a class="headerlink" href="#gaft.operators.mutation.flip_bit_mutation.random" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="analysis.console_output.html" class="btn btn-neutral float-right" title="gaft.analysis.console_output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="operators.crossover.html" class="btn btn-neutral" title="gaft.operators.crossover" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zhengjiang Shao
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -11,6 +11,8 @@ API
    components.decimal_individual
    components.population
    operators.selection
+   operators.crossover
+   operators.mutation
    analysis.console_output
    analysis.fitness_store
 
