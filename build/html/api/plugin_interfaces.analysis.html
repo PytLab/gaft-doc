@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>gaft.analysis.fitness_store &mdash; GAFT GAFT documentation</title>
+  <title>gaft.plugin_interfaces.analysis &mdash; GAFT GAFT documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="gaft.plugin_interfaces.analysis" href="plugin_interfaces.analysis.html" />
-    <link rel="prev" title="gaft.analysis.console_output" href="analysis.console_output.html" /> 
+    <link rel="next" title="gaft.plugin_interfaces.operators" href="plugin_interfaces.operators.html" />
+    <link rel="prev" title="gaft.analysis.fitness_store" href="analysis.fitness_store.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -91,8 +91,8 @@
 <li class="toctree-l2"><a class="reference internal" href="operators.crossover.html">gaft.operators.crossover</a></li>
 <li class="toctree-l2"><a class="reference internal" href="operators.mutation.html">gaft.operators.mutation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="analysis.console_output.html">gaft.analysis.console_output</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">gaft.analysis.fitness_store</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plugin_interfaces.analysis.html">gaft.plugin_interfaces.analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.fitness_store.html">gaft.analysis.fitness_store</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">gaft.plugin_interfaces.analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugin_interfaces.operators.html">gaft.plugin_interfaces.operators</a></li>
 </ul>
 </li>
@@ -143,13 +143,13 @@
         
           <li><a href="index.html">API</a> &raquo;</li>
         
-      <li>gaft.analysis.fitness_store</li>
+      <li>gaft.plugin_interfaces.analysis</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/analysis.fitness_store.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/plugin_interfaces.analysis.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -162,26 +162,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-gaft.analysis.fitness_store">
-<span id="gaft-analysis-fitness-store"></span><h1>gaft.analysis.fitness_store<a class="headerlink" href="#module-gaft.analysis.fitness_store" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-gaft.plugin_interfaces.analysis">
+<span id="gaft-plugin-interfaces-analysis"></span><h1>gaft.plugin_interfaces.analysis<a class="headerlink" href="#module-gaft.plugin_interfaces.analysis" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="gaft.analysis.fitness_store.FitnessStore">
-<em class="property">class </em><code class="descclassname">gaft.analysis.fitness_store.</code><code class="descname">FitnessStore</code><a class="reference internal" href="../_modules/gaft/analysis/fitness_store.html#FitnessStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.analysis.fitness_store.FitnessStore" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="plugin_interfaces.analysis.html#gaft.plugin_interfaces.analysis.OnTheFlyAnalysis" title="gaft.plugin_interfaces.analysis.OnTheFlyAnalysis"><code class="xref py py-class docutils literal notranslate"><span class="pre">gaft.plugin_interfaces.analysis.OnTheFlyAnalysis</span></code></a></p>
-<p>Built-in on-the-fly analysis plugin class for storing fitness related data during iteration.</p>
-<dl class="docutils">
-<dt>Attribute:</dt>
-<dd><dl class="first last docutils">
+<dt id="gaft.plugin_interfaces.analysis.OnTheFlyAnalysis">
+<em class="property">class </em><code class="descclassname">gaft.plugin_interfaces.analysis.</code><code class="descname">OnTheFlyAnalysis</code><a class="reference internal" href="../_modules/gaft/plugin_interfaces/analysis.html#OnTheFlyAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.plugin_interfaces.analysis.OnTheFlyAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for providing an interface to easily extend and customize the behavior
+of the on-the-fly analysis functionality of gapy.</p>
+<p>Attribute:</p>
+<blockquote>
+<div><dl class="docutils">
 <dt>interval(<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): The analysis interval in evolution iteration, default </dt>
 <dd>value is 1 meaning analyze every step.</dd>
 <dt>master_only(<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>): Flag for if the analysis plugin is only effective </dt>
 <dd>in master process. Default is True.</dd>
 </dl>
-</dd>
-</dl>
+</div></blockquote>
 <dl class="method">
-<dt id="gaft.analysis.fitness_store.FitnessStore.finalize">
-<code class="descname">finalize</code><span class="sig-paren">(</span><em>population</em>, <em>engine</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/analysis/fitness_store.html#FitnessStore.finalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.analysis.fitness_store.FitnessStore.finalize" title="Permalink to this definition">¶</a></dt>
+<dt id="gaft.plugin_interfaces.analysis.OnTheFlyAnalysis.finalize">
+<code class="descname">finalize</code><span class="sig-paren">(</span><em>population</em>, <em>engine</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/plugin_interfaces/analysis.html#OnTheFlyAnalysis.finalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.plugin_interfaces.analysis.OnTheFlyAnalysis.finalize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called after the iteration to allow for custom finalization and
 post-processing of the collected data.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -199,8 +199,8 @@ post-processing of the collected data.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="gaft.analysis.fitness_store.FitnessStore.register_step">
-<code class="descname">register_step</code><span class="sig-paren">(</span><em>g</em>, <em>population</em>, <em>engine</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/analysis/fitness_store.html#FitnessStore.register_step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.analysis.fitness_store.FitnessStore.register_step" title="Permalink to this definition">¶</a></dt>
+<dt id="gaft.plugin_interfaces.analysis.OnTheFlyAnalysis.register_step">
+<code class="descname">register_step</code><span class="sig-paren">(</span><em>g</em>, <em>population</em>, <em>engine</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/plugin_interfaces/analysis.html#OnTheFlyAnalysis.register_step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.plugin_interfaces.analysis.OnTheFlyAnalysis.register_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function called in each iteration step.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -218,8 +218,8 @@ post-processing of the collected data.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="gaft.analysis.fitness_store.FitnessStore.setup">
-<code class="descname">setup</code><span class="sig-paren">(</span><em>ng</em>, <em>engine</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/analysis/fitness_store.html#FitnessStore.setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.analysis.fitness_store.FitnessStore.setup" title="Permalink to this definition">¶</a></dt>
+<dt id="gaft.plugin_interfaces.analysis.OnTheFlyAnalysis.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><em>ng</em>, <em>engine</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/plugin_interfaces/analysis.html#OnTheFlyAnalysis.setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.plugin_interfaces.analysis.OnTheFlyAnalysis.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function called right before the start of genetic algorithm main iteration
 to allow for custom setup of the analysis object.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -248,10 +248,10 @@ to allow for custom setup of the analysis object.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plugin_interfaces.analysis.html" class="btn btn-neutral float-right" title="gaft.plugin_interfaces.analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plugin_interfaces.operators.html" class="btn btn-neutral float-right" title="gaft.plugin_interfaces.operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="analysis.console_output.html" class="btn btn-neutral" title="gaft.analysis.console_output" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="analysis.fitness_store.html" class="btn btn-neutral" title="gaft.analysis.fitness_store" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -15,4 +15,6 @@ API
    operators.mutation
    analysis.console_output
    analysis.fitness_store
+   plugin_interfaces.analysis
+   plugin_interfaces.operators
 

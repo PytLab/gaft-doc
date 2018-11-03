@@ -157,6 +157,7 @@
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
@@ -207,6 +208,12 @@
       <li><a href="api/analysis.console_output.html#gaft.analysis.console_output.ConsoleOutput">ConsoleOutput (class in gaft.analysis.console_output)</a>
 </li>
       <li><a href="api/operators.crossover.html#gaft.operators.crossover.uniform_crossover.UniformCrossover.cross">cross() (gaft.operators.crossover.uniform_crossover.UniformCrossover method)</a>
+
+      <ul>
+        <li><a href="api/plugin_interfaces.operators.html#gaft.plugin_interfaces.operators.crossover.Crossover.cross">(gaft.plugin_interfaces.operators.crossover.Crossover method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/plugin_interfaces.operators.html#gaft.plugin_interfaces.operators.crossover.Crossover">Crossover (class in gaft.plugin_interfaces.operators.crossover)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -263,11 +270,13 @@
       <ul>
         <li><a href="api/analysis.fitness_store.html#gaft.analysis.fitness_store.FitnessStore.finalize">(gaft.analysis.fitness_store.FitnessStore method)</a>
 </li>
-      </ul></li>
-      <li><a href="api/engine.html#gaft.engine.GAEngine.fitness_register">fitness_register() (gaft.engine.GAEngine method)</a>
+        <li><a href="api/plugin_interfaces.analysis.html#gaft.plugin_interfaces.analysis.OnTheFlyAnalysis.finalize">(gaft.plugin_interfaces.analysis.OnTheFlyAnalysis method)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/engine.html#gaft.engine.GAEngine.fitness_register">fitness_register() (gaft.engine.GAEngine method)</a>
+</li>
       <li><a href="api/analysis.fitness_store.html#gaft.analysis.fitness_store.FitnessStore">FitnessStore (class in gaft.analysis.fitness_store)</a>
 </li>
       <li><a href="api/operators.mutation.html#gaft.operators.mutation.flip_bit_mutation.FlipBitBigMutation">FlipBitBigMutation (class in gaft.operators.mutation.flip_bit_mutation)</a>
@@ -294,12 +303,12 @@
 </li>
       <li><a href="api/components.population.html#module-gaft.components.population">gaft.components.population (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/engine.html#module-gaft.engine">gaft.engine (module)</a>
 </li>
       <li><a href="api/mpiutil.html#module-gaft.mpiutil">gaft.mpiutil (module)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/operators.crossover.html#module-gaft.operators.crossover.uniform_crossover">gaft.operators.crossover.uniform_crossover (module)</a>
 </li>
       <li><a href="api/operators.mutation.html#module-gaft.operators.mutation.flip_bit_mutation">gaft.operators.mutation.flip_bit_mutation (module)</a>
@@ -311,6 +320,14 @@
       <li><a href="api/operators.selection.html#module-gaft.operators.selection.roulette_wheel_selection">gaft.operators.selection.roulette_wheel_selection (module)</a>
 </li>
       <li><a href="api/operators.selection.html#module-gaft.operators.selection.tournament_selection">gaft.operators.selection.tournament_selection (module)</a>
+</li>
+      <li><a href="api/plugin_interfaces.analysis.html#module-gaft.plugin_interfaces.analysis">gaft.plugin_interfaces.analysis (module)</a>
+</li>
+      <li><a href="api/plugin_interfaces.operators.html#module-gaft.plugin_interfaces.operators.crossover">gaft.plugin_interfaces.operators.crossover (module)</a>
+</li>
+      <li><a href="api/plugin_interfaces.operators.html#module-gaft.plugin_interfaces.operators.mutation">gaft.plugin_interfaces.operators.mutation (module)</a>
+</li>
+      <li><a href="api/plugin_interfaces.operators.html#module-gaft.plugin_interfaces.operators.selection">gaft.plugin_interfaces.operators.selection (module)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -364,10 +381,10 @@
 </li>
       <li><a href="api/mpiutil.html#gaft.mpiutil.MPIUtil.merge_seq">merge_seq() (gaft.mpiutil.MPIUtil method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/components.population.html#gaft.components.population.Population.min">min() (gaft.components.population.Population method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/engine.html#gaft.engine.GAEngine.minimize">minimize() (gaft.engine.GAEngine method)</a>
 </li>
       <li><a href="api/mpiutil.html#gaft.mpiutil.MPIUtil">MPIUtil (class in gaft.mpiutil)</a>
@@ -377,7 +394,11 @@
       <ul>
         <li><a href="api/operators.mutation.html#gaft.operators.mutation.flip_bit_mutation.FlipBitMutation.mutate">(gaft.operators.mutation.flip_bit_mutation.FlipBitMutation method)</a>
 </li>
+        <li><a href="api/plugin_interfaces.operators.html#gaft.plugin_interfaces.operators.mutation.Mutation.mutate">(gaft.plugin_interfaces.operators.mutation.Mutation method)</a>
+</li>
       </ul></li>
+      <li><a href="api/plugin_interfaces.operators.html#gaft.plugin_interfaces.operators.mutation.Mutation">Mutation (class in gaft.plugin_interfaces.operators.mutation)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -385,6 +406,14 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/components.population.html#gaft.components.population.Population.new">new() (gaft.components.population.Population method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/plugin_interfaces.analysis.html#gaft.plugin_interfaces.analysis.OnTheFlyAnalysis">OnTheFlyAnalysis (class in gaft.plugin_interfaces.analysis)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -421,6 +450,8 @@
       <ul>
         <li><a href="api/analysis.fitness_store.html#gaft.analysis.fitness_store.FitnessStore.register_step">(gaft.analysis.fitness_store.FitnessStore method)</a>
 </li>
+        <li><a href="api/plugin_interfaces.analysis.html#gaft.plugin_interfaces.analysis.OnTheFlyAnalysis.register_step">(gaft.plugin_interfaces.analysis.OnTheFlyAnalysis method)</a>
+</li>
       </ul></li>
       <li><a href="api/operators.selection.html#gaft.operators.selection.roulette_wheel_selection.RouletteWheelSelection">RouletteWheelSelection (class in gaft.operators.selection.roulette_wheel_selection)</a>
 </li>
@@ -441,15 +472,21 @@
 </li>
         <li><a href="api/operators.selection.html#gaft.operators.selection.tournament_selection.TournamentSelection.select">(gaft.operators.selection.tournament_selection.TournamentSelection method)</a>
 </li>
+        <li><a href="api/plugin_interfaces.operators.html#gaft.plugin_interfaces.operators.selection.Selection.select">(gaft.plugin_interfaces.operators.selection.Selection method)</a>
+</li>
       </ul></li>
+      <li><a href="api/plugin_interfaces.operators.html#gaft.plugin_interfaces.operators.selection.Selection">Selection (class in gaft.plugin_interfaces.operators.selection)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/analysis.console_output.html#gaft.analysis.console_output.ConsoleOutput.setup">setup() (gaft.analysis.console_output.ConsoleOutput method)</a>
 
       <ul>
         <li><a href="api/analysis.fitness_store.html#gaft.analysis.fitness_store.FitnessStore.setup">(gaft.analysis.fitness_store.FitnessStore method)</a>
 </li>
+        <li><a href="api/plugin_interfaces.analysis.html#gaft.plugin_interfaces.analysis.OnTheFlyAnalysis.setup">(gaft.plugin_interfaces.analysis.OnTheFlyAnalysis method)</a>
+</li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mpiutil.html#gaft.mpiutil.MPIUtil.size">size (gaft.mpiutil.MPIUtil attribute)</a>
 </li>
       <li><a href="api/components.individual.html#gaft.components.individual.SolutionRanges">SolutionRanges (class in gaft.components.individual)</a>

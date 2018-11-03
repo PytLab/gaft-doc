@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="gaft.analysis.fitness_store" href="analysis.fitness_store.html" />
-    <link rel="prev" title="gaft.components.population" href="components.population.html" /> 
+    <link rel="prev" title="gaft.operators.mutation" href="operators.mutation.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,8 +87,13 @@
 <li class="toctree-l2"><a class="reference internal" href="components.binary_individual.html">gaft.components.binary_individual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="components.decimal_individual.html">gaft.components.decimal_individual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="components.population.html">gaft.components.population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operators.selection.html">gaft.operators.selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operators.crossover.html">gaft.operators.crossover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operators.mutation.html">gaft.operators.mutation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">gaft.analysis.console_output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="analysis.fitness_store.html">gaft.analysis.fitness_store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugin_interfaces.analysis.html">gaft.plugin_interfaces.analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugin_interfaces.operators.html">gaft.plugin_interfaces.operators</a></li>
 </ul>
 </li>
 </ul>
@@ -162,18 +167,17 @@
 <dl class="class">
 <dt id="gaft.analysis.console_output.ConsoleOutput">
 <em class="property">class </em><code class="descclassname">gaft.analysis.console_output.</code><code class="descname">ConsoleOutput</code><a class="reference internal" href="../_modules/gaft/analysis/console_output.html#ConsoleOutput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.analysis.console_output.ConsoleOutput" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">gaft.plugin_interfaces.analysis.OnTheFlyAnalysis</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="plugin_interfaces.analysis.html#gaft.plugin_interfaces.analysis.OnTheFlyAnalysis" title="gaft.plugin_interfaces.analysis.OnTheFlyAnalysis"><code class="xref py py-class docutils literal notranslate"><span class="pre">gaft.plugin_interfaces.analysis.OnTheFlyAnalysis</span></code></a></p>
 <p>Built-in on-the-fly analysis plugin class for outputing log on console.</p>
-<dl class="docutils">
-<dt>Attribute:</dt>
-<dd><dl class="first last docutils">
+<p>Attribute:</p>
+<blockquote>
+<div><dl class="docutils">
 <dt>interval(<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): The analysis interval in evolution iteration, default </dt>
 <dd>value is 1 meaning analyze every step.</dd>
 <dt>master_only(<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>): Flag for if the analysis plugin is only effective </dt>
 <dd>in master process. Default is True.</dd>
 </dl>
-</dd>
-</dl>
+</div></blockquote>
 <dl class="method">
 <dt id="gaft.analysis.console_output.ConsoleOutput.finalize">
 <code class="descname">finalize</code><span class="sig-paren">(</span><em>population</em>, <em>engine</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/analysis/console_output.html#ConsoleOutput.finalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.analysis.console_output.ConsoleOutput.finalize" title="Permalink to this definition">¶</a></dt>
@@ -185,7 +189,7 @@ post-processing of the collected data.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>population</strong> (<a class="reference internal" href="components.population.html#gaft.components.population.Population" title="gaft.components.population.Population"><em>Population</em></a>) -- The up to date population of the iteration.</li>
-<li><strong>engine</strong> (<a class="reference internal" href="engine.html#gaft.engine.GAEngine" title="gaft.engine.GAEngine"><em>GAEngine</em></a>) -- The current GAEngine where the analysis is running.</li>
+<li><strong>engine</strong> (<a class="reference internal" href="engine.html#gaft.engine.GAEngine" title="gaft.engine.GAEngine"><em>gaft.engine.GAEngine</em></a>) -- The current GAEngine where the analysis is running.</li>
 </ul>
 </td>
 </tr>
@@ -204,7 +208,7 @@ post-processing of the collected data.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>g</strong> (<em>int</em>) -- Current generation number.</li>
 <li><strong>population</strong> (<a class="reference internal" href="components.population.html#gaft.components.population.Population" title="gaft.components.population.Population"><em>Population</em></a>) -- The up to date population of the iteration.</li>
-<li><strong>engine</strong> (<a class="reference internal" href="engine.html#gaft.engine.GAEngine" title="gaft.engine.GAEngine"><em>GAEngine</em></a>) -- The current GAEngine where the analysis is running.</li>
+<li><strong>engine</strong> (<a class="reference internal" href="engine.html#gaft.engine.GAEngine" title="gaft.engine.GAEngine"><em>gaft.engine.GAEngine</em></a>) -- The current GAEngine where the analysis is running.</li>
 </ul>
 </td>
 </tr>
@@ -223,7 +227,7 @@ to allow for custom setup of the analysis object.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>ng</strong> (<em>int</em>) -- The number of generation.</li>
-<li><strong>engine</strong> (<a class="reference internal" href="engine.html#gaft.engine.GAEngine" title="gaft.engine.GAEngine"><em>GAEngine</em></a>) -- The current GAEngine where the analysis is running.</li>
+<li><strong>engine</strong> (<a class="reference internal" href="engine.html#gaft.engine.GAEngine" title="gaft.engine.GAEngine"><em>gaft.engine.GAEngine</em></a>) -- The current GAEngine where the analysis is running.</li>
 </ul>
 </td>
 </tr>
@@ -246,7 +250,7 @@ to allow for custom setup of the analysis object.</p>
         <a href="analysis.fitness_store.html" class="btn btn-neutral float-right" title="gaft.analysis.fitness_store" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="components.population.html" class="btn btn-neutral" title="gaft.components.population" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="operators.mutation.html" class="btn btn-neutral" title="gaft.operators.mutation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="Python" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="Python" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>gaft.plugin_interfaces.analysis &mdash; GAFT GAFT documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> GAFT
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">GAFT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>gaft.plugin_interfaces.analysis</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for gaft.plugin_interfaces.analysis</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">.metaclasses</span> <span class="k">import</span> <span class="n">AnalysisMeta</span>
+
+
+<div class="viewcode-block" id="OnTheFlyAnalysis"><a class="viewcode-back" href="../../../api/plugin_interfaces.analysis.html#gaft.plugin_interfaces.analysis.OnTheFlyAnalysis">[docs]</a><span class="k">class</span> <span class="nc">OnTheFlyAnalysis</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">AnalysisMeta</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Class for providing an interface to easily extend and customize the behavior</span>
+<span class="sd">    of the on-the-fly analysis functionality of gapy.</span>
+
+<span class="sd">    Attribute:</span>
+
+<span class="sd">        interval(:obj:`int`): The analysis interval in evolution iteration, default </span>
+<span class="sd">                              value is 1 meaning analyze every step.</span>
+
+<span class="sd">        master_only(:obj:`bool`): Flag for if the analysis plugin is only effective </span>
+<span class="sd">                                  in master process. Default is True.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Only used in master process?</span>
+    <span class="n">master_only</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># Analysis interval.</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="mi">1</span>
+
+<div class="viewcode-block" id="OnTheFlyAnalysis.setup"><a class="viewcode-back" href="../../../api/plugin_interfaces.analysis.html#gaft.plugin_interfaces.analysis.OnTheFlyAnalysis.setup">[docs]</a>    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ng</span><span class="p">,</span> <span class="n">engine</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Function called right before the start of genetic algorithm main iteration</span>
+<span class="sd">        to allow for custom setup of the analysis object.</span>
+
+<span class="sd">        :param ng: The number of generation.</span>
+<span class="sd">        :type ng: int</span>
+
+<span class="sd">        :param engine: The current GAEngine where the analysis is running.</span>
+<span class="sd">        :type engine: gaft.engine.GAEngine</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
+
+<div class="viewcode-block" id="OnTheFlyAnalysis.register_step"><a class="viewcode-back" href="../../../api/plugin_interfaces.analysis.html#gaft.plugin_interfaces.analysis.OnTheFlyAnalysis.register_step">[docs]</a>    <span class="k">def</span> <span class="nf">register_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">population</span><span class="p">,</span> <span class="n">engine</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Function called in each iteration step.</span>
+
+<span class="sd">        :param g: Current generation number.</span>
+<span class="sd">        :type g: int</span>
+
+<span class="sd">        :param population: The up to date population of the iteration.</span>
+<span class="sd">        :type population: Population</span>
+
+<span class="sd">        :param engine: The current GAEngine where the analysis is running.</span>
+<span class="sd">        :type engine: gaft.engine.GAEngine</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
+
+<div class="viewcode-block" id="OnTheFlyAnalysis.finalize"><a class="viewcode-back" href="../../../api/plugin_interfaces.analysis.html#gaft.plugin_interfaces.analysis.OnTheFlyAnalysis.finalize">[docs]</a>    <span class="k">def</span> <span class="nf">finalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">population</span><span class="p">,</span> <span class="n">engine</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Called after the iteration to allow for custom finalization and</span>
+<span class="sd">        post-processing of the collected data.</span>
+
+<span class="sd">        :param population: The up to date population of the iteration.</span>
+<span class="sd">        :type population: Population</span>
+
+<span class="sd">        :param engine: The current GAEngine where the analysis is running.</span>
+<span class="sd">        :type engine: gaft.engine.GAEngine</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div></div>
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zhengjiang Shao
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

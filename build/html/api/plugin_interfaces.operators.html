@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="Python" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="Python" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>gaft.plugin_interfaces.operators &mdash; GAFT GAFT documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="gaft.plugin_interfaces.analysis" href="plugin_interfaces.analysis.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> GAFT
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="engine.html">gaft.engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpiutil.html">gaft.mpiutil</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.individual.html">gaft.components.individual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.binary_individual.html">gaft.components.binary_individual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.decimal_individual.html">gaft.components.decimal_individual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.population.html">gaft.components.population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operators.selection.html">gaft.operators.selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operators.crossover.html">gaft.operators.crossover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operators.mutation.html">gaft.operators.mutation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.console_output.html">gaft.analysis.console_output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.fitness_store.html">gaft.analysis.fitness_store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugin_interfaces.analysis.html">gaft.plugin_interfaces.analysis</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">gaft.plugin_interfaces.operators</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GAFT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">API</a> &raquo;</li>
+        
+      <li>gaft.plugin_interfaces.operators</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/plugin_interfaces.operators.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-gaft.plugin_interfaces.operators.selection">
+<span id="gaft-plugin-interfaces-operators"></span><h1>gaft.plugin_interfaces.operators<a class="headerlink" href="#module-gaft.plugin_interfaces.operators.selection" title="Permalink to this headline">¶</a></h1>
+<p>Module for Genetic Algorithm selection operator class</p>
+<dl class="class">
+<dt id="gaft.plugin_interfaces.operators.selection.Selection">
+<em class="property">class </em><code class="descclassname">gaft.plugin_interfaces.operators.selection.</code><code class="descname">Selection</code><a class="reference internal" href="../_modules/gaft/plugin_interfaces/operators/selection.html#Selection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.plugin_interfaces.operators.selection.Selection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for providing an interface to easily extend the behavior of selection
+operation.</p>
+<dl class="method">
+<dt id="gaft.plugin_interfaces.operators.selection.Selection.select">
+<code class="descname">select</code><span class="sig-paren">(</span><em>population</em>, <em>fitness</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/plugin_interfaces/operators/selection.html#Selection.select"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.plugin_interfaces.operators.selection.Selection.select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when we need to select parents from a population to later breeding.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>population</strong> (<em>gaft.compoenents.Population</em>) -- The current population</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return parents:</th><td class="field-body">Two selected individuals for crossover</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-gaft.plugin_interfaces.operators.crossover"></span><p>Module for Genetic Algorithm crossover operator class</p>
+<dl class="class">
+<dt id="gaft.plugin_interfaces.operators.crossover.Crossover">
+<em class="property">class </em><code class="descclassname">gaft.plugin_interfaces.operators.crossover.</code><code class="descname">Crossover</code><a class="reference internal" href="../_modules/gaft/plugin_interfaces/operators/crossover.html#Crossover"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.plugin_interfaces.operators.crossover.Crossover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for providing an interface to easily extend the behavior of crossover
+operation between two individuals for children breeding.</p>
+<p>Attributes:</p>
+<blockquote>
+<div>pc(<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): The probability of crossover (usaully between 0.25 ~ 1.0)</div></blockquote>
+<dl class="method">
+<dt id="gaft.plugin_interfaces.operators.crossover.Crossover.cross">
+<code class="descname">cross</code><span class="sig-paren">(</span><em>father</em>, <em>mother</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/plugin_interfaces/operators/crossover.html#Crossover.cross"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.plugin_interfaces.operators.crossover.Crossover.cross" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when we need to cross parents to generate children.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>father</strong> (<em>gaft.components.IndividualBase</em>) -- The parent individual to be crossed</li>
+<li><strong>mother</strong> (<em>gaft.components.IndividualBase</em>) -- The parent individual to be crossed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Return children:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last">Two new children individuals</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-gaft.plugin_interfaces.operators.mutation"></span><p>Module for Genetic Algorithm mutation operator class</p>
+<dl class="class">
+<dt id="gaft.plugin_interfaces.operators.mutation.Mutation">
+<em class="property">class </em><code class="descclassname">gaft.plugin_interfaces.operators.mutation.</code><code class="descname">Mutation</code><a class="reference internal" href="../_modules/gaft/plugin_interfaces/operators/mutation.html#Mutation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.plugin_interfaces.operators.mutation.Mutation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for providing an interface to easily extend the behavior of selection
+operation.</p>
+<p>Attributes:</p>
+<blockquote>
+<div>pm(float): Default mutation probability, default is 0.1</div></blockquote>
+<dl class="method">
+<dt id="gaft.plugin_interfaces.operators.mutation.Mutation.mutate">
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>individual</em>, <em>engine</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gaft/plugin_interfaces/operators/mutation.html#Mutation.mutate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gaft.plugin_interfaces.operators.mutation.Mutation.mutate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when an individual to be mutated.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>individual</strong> (<em>gaft.components.IndividualBase</em>) -- The individual to be mutated</li>
+<li><strong>engine</strong> (<a class="reference internal" href="engine.html#gaft.engine.GAEngine" title="gaft.engine.GAEngine"><em>gaft.engine.GAEngine</em></a>) -- The GA engine where the mutation operator belongs.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="plugin_interfaces.analysis.html" class="btn btn-neutral" title="gaft.plugin_interfaces.analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zhengjiang Shao
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
