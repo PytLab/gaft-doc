@@ -11,5 +11,6 @@ Welcome to GAFT's documentation!
    :caption: Contents:
 
    intro.rst
+   install.rst
    api/index
 
