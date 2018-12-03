@@ -10,5 +10,6 @@ Welcome to GAFT's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   intro.rst
    api/index
 

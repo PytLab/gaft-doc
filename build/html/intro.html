@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to GAFT&#39;s documentation! &mdash; GAFT GAFT documentation</title>
+  <title>Introduction &mdash; GAFT GAFT documentation</title>
   
 
   
@@ -28,7 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Introduction" href="intro.html" /> 
+    <link rel="next" title="API" href="api/index.html" />
+    <link rel="prev" title="Welcome to GAFT&#39;s documentation!" href="index.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -47,7 +48,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> GAFT
+            <a href="index.html" class="icon icon-home"> GAFT
           
 
           
@@ -78,8 +79,12 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-genetic-algorithm">Why Genetic Algorithm?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-gaft">Why <cite>GAFT</cite>?</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="api/index.html">API</a></li>
 </ul>
 
@@ -95,7 +100,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">GAFT</a>
+          <a href="index.html">GAFT</a>
         
       </nav>
 
@@ -124,15 +129,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">Docs</a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Welcome to GAFT's documentation!</li>
+      <li>Introduction</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/intro.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -145,33 +150,42 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-gaft-s-documentation">
-<h1>Welcome to GAFT's documentation!<a class="headerlink" href="#welcome-to-gaft-s-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#why-genetic-algorithm">Why Genetic Algorithm?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#why-gaft">Why <cite>GAFT</cite>?</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="api/index.html">API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api/engine.html">gaft.engine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/mpiutil.html">gaft.mpiutil</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/components.individual.html">gaft.components.individual</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/components.binary_individual.html">gaft.components.binary_individual</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/components.decimal_individual.html">gaft.components.decimal_individual</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/components.population.html">gaft.components.population</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/operators.selection.html">gaft.operators.selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/operators.crossover.html">gaft.operators.crossover</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/operators.mutation.html">gaft.operators.mutation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/analysis.console_output.html">gaft.analysis.console_output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/analysis.fitness_store.html">gaft.analysis.fitness_store</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/plugin_interfaces.analysis.html">gaft.plugin_interfaces.analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/plugin_interfaces.operators.html">gaft.plugin_interfaces.operators</a></li>
-</ul>
-</li>
-</ul>
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to the <cite>GAFT</cite> documentation!</p>
+<p><cite>GAFT</cite> is a general genetic algorithm framwork written in Python with MPI
+parallelization under the GPLv3 license. It's an acronym for Genetic Algorithm
+Framework for Python.</p>
+<p>You can always find the latest stable version of the program
+here: <a class="reference external" href="https://github.com/pytlab/gaft">https://github.com/pytlab/gaft</a></p>
+<p>This documentation describes version 0.5.6</p>
+<div class="section" id="why-genetic-algorithm">
+<h2>Why Genetic Algorithm?<a class="headerlink" href="#why-genetic-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>In contrast to those local search methods, genetic algorithms which are
+categorized as global search heuristics are a particular class of evolutionary
+algorithm (EA) that utilizes techniques inspired by evolutionary biology ideas
+such as inheritance, mutation, selection and crossover. Without calculating
+derivatives, genetic algorithms can be used in many domains to find the optimal
+solutions for complex problems such as biology, engineering, computational chemistry,
+computer science and social science. Especially in a case where the mathematical
+data is available and answers are available but the formula that joins the data
+to the answers is missing, at this time, a genetic algorithm can be used to 'evolve'
+an expression tree to create a very close fit to the data, for example, the complex
+hyper parameters optimization of a mathematical model. At the same time, genetic algorithms
+have relative fixed iteration process and large space for algorithm adjustment
+by genetic operator improvement. Therefore, genetic algorithm is one of the most
+appropriate methods to construct a general optimization framework for more
+realistic applications in different fields</p>
+</div>
+<div class="section" id="why-gaft">
+<h2>Why <cite>GAFT</cite>?<a class="headerlink" href="#why-gaft" title="Permalink to this headline">¶</a></h2>
+<p>Optimization problem that needs is a common problem researchers meet in computational
+physics and chemistry field. It is a great challenge to create a high-efficient
+program that are general and easy-to-use enough to be used directly for optimizing
+different target problems and are customizable enough to help researcher to develop
+new algorithm and run tests.</p>
+<p>To this end, we present a Python general Genetic Algorithm framework named GAFT which
+provides flexible and customizable API to help researchers in various fields to apply genetic algorithm optimization flow to their own targets.</p>
 </div>
 </div>
 
@@ -183,8 +197,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="intro.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="api/index.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to GAFT&#39;s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -78,6 +78,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 </ul>
 
@@ -279,7 +280,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_ori_fmax</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ori_fmin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ori_fmean</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
 
         <span class="c1"># Default fitness functions.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ori_fitness</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitness</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ori_fitness</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitness</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitness</span>
 
         <span class="c1"># Store current generation number.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_generation</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># Starts from 0.</span>
@@ -541,7 +542,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Zhengjiang Shao
+        &copy; Copyright 2018, Zhengjiang Shao.
 
     </p>
   </div>
@@ -560,14 +561,21 @@
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'GAFT',
+            LANGUAGE:'Python',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
