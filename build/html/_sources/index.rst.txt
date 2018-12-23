@@ -12,5 +12,6 @@ Welcome to GAFT's documentation!
 
    intro.rst
    install.rst
+   build_gasol.rst
    api/index
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; GAFT GAFT documentation</title>
+  <title>Build C++ API &mdash; GAFT GAFT documentation</title>
   
 
   
@@ -27,7 +27,9 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API" href="api/index.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -59,7 +61,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -77,10 +79,15 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="build_gasol.html">Build C++ API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Build C++ API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-dir-for-build">Create dir for build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build">Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-test">Run test</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="api/index.html">API</a></li>
 </ul>
 
@@ -127,12 +134,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Search</li>
+      <li>Build C++ API</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/build_gasol.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -144,24 +153,57 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="build-c-api">
+<h1>Build C++ API<a class="headerlink" href="#build-c-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="create-dir-for-build">
+<h2>Create dir for build<a class="headerlink" href="#create-dir-for-build" title="Permalink to this headline">¶</a></h2>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">gasol</span>
+<span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build">
+<h2>Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Serial version</li>
+</ul>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">..</span>
+<span class="n">make</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>MPI parallel version</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">CXX</span><span class="o">=/&lt;</span><span class="n">mpi_path</span><span class="o">&gt;/</span><span class="n">mpicxx</span>
+<span class="n">cmake</span> <span class="o">-</span><span class="n">DMPI</span><span class="o">=</span><span class="n">true</span> <span class="o">..</span>
+<span class="n">make</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-test">
+<h2>Run test<a class="headerlink" href="#run-test" title="Permalink to this headline">¶</a></h2>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">unittest</span>
+<span class="o">./</span><span class="n">unittest</span><span class="o">/</span><span class="n">unittest</span>
+</pre></div>
+</div>
+</div>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api/index.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -194,7 +236,6 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/javascript" src="_static/searchtools.js"></script>
     
 
   
@@ -205,14 +246,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
-   
-
+  </script> 
 
 </body>
 </html>
